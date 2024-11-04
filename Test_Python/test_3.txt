@@ -1,0 +1,59 @@
+Python
+
+1.
+Lists are mutable, meaning their elements can be changed, added, or removed after creation. Lists are created with square brackets [].
+Tuples are immutable, meaning their elements cannot be modified once created. They are created with parentheses ().
+Why choose one over the other? Choose a list when I need a dynamic collection with frequent modifications. Use a tuple when I need a constant collection that should remain unchanged, as tuples can be slightly more memory-efficient and faster due to immutability.
+
+2.
+def get_even_numbers(numbers):
+    return [num for num in numbers if num % 2 == 0]
+
+3.
+Python uses reference counting and generational garbage collection to manage memory.
+
+Reference Counting: Python tracks the number of references to each object in memory. When an object’s reference count drops to zero, it is automatically removed.
+Generational Garbage Collection: Python groups objects by age in generations (0, 1, and 2). New objects start in generation 0. When they survive garbage collection cycles, they move to older generations. Generation 0 is collected most frequently, while older generations are collected less often.
+
+4.
+def average_scores(student_scores):
+    return {student: sum(scores) / len(scores) for student, scores in student_scores.items()}
+
+5.
+*args allows a function to accept any number of positional arguments, which are accessible as a tuple.
+**kwargs allows a function to accept any number of keyword arguments, which are accessible as a dictionary.
+Usage: *args is useful when the number of arguments is uncertain, and **kwargs is helpful for passing a flexible number of keyword arguments.
+
+Streamlit
+
+1.
+st.cache stores the result of a function so that it doesn’t run again unless its inputs change. It’s useful for improving performance when loading data or performing heavy computations that don’t need to be re-run each time the app reloads.
+Avoid using st.cache when dealing with functions that have side effects (like writing to a database) or that require real-time data updates, as caching can make the app behave unpredictably in these cases.
+
+2.
+import streamlit as st
+
+name = st.text_input("Enter my name:")
+if name:
+    st.write(f"Hello, {name}! Welcome to Streamlit.")
+
+3.
+st.sidebar allows developers to place input widgets in a sidebar, helping to keep the main app interface clean and organized. It improves user experience by separating controls from the main content, making navigation easier, especially in complex apps with many input options.
+
+4.
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Slider for number of data points
+num_points = st.slider("Select number of data points", min_value=10, max_value=100)
+
+# Generate random data
+data = pd.DataFrame(np.random.randn(num_points, 1), columns=["Value"])
+
+# Display line chart
+st.line_chart(data)
+
+5.
+Streamlit re-runs the script from top to bottom whenever a widget like st.button or st.checkbox is clicked. This behavior can trigger real-time updates based on user interaction.
+Scenario: In a stock dashboard, a user can click a button to refresh the data and see the latest stock prices, enabling real-time monitoring.
