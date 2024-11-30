@@ -1,0 +1,214 @@
+A1:
+Python has several primary data types:
+
+int: Represents integers (e.g., 5, -10).
+float: Represents floating-point numbers (e.g., 3.14, -7.0).
+str: Represents strings (e.g., "Hello", 'Python').
+list: An ordered, mutable collection (e.g., [1, 2, 3]).
+tuple: An ordered, immutable collection (e.g., (1, 2, 3)).
+dict: A collection of key-value pairs (e.g., {"name": "John", "age": 25}).
+set: An unordered collection of unique elements (e.g., {1, 2, 3}).
+
+A2:
+List:
+
+Mutable: You can modify the list (add, remove, or change elements).
+Ordered: Elements maintain their order of insertion.
+Duplicates allowed: Lists can contain duplicate values.
+
+Tuple:
+
+Immutable: Once created, tuples cannot be modified.
+Ordered: Elements maintain their order of insertion.
+Duplicates allowed: Tuples can contain duplicate values.
+
+Set:
+
+Mutable: You can add or remove elements from a set.
+Unordered: Elements do not maintain any particular order.
+Unique values: Sets cannot contain duplicate elements.
+
+A3:
+In Python, exceptions are handled using try, except, else, and finally blocks:
+
+try: The code that may raise an exception is placed here.
+except: If an exception occurs, the code inside the except block is executed.
+else: Code in the else block runs if no exceptions occur in the try block.
+finally: The finally block runs regardless of whether an exception occurs, ensuring that cleanup tasks are performed.
+
+Example:
+
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Division by zero error!")
+else:
+    print("No error occurred.")
+finally:
+    print("This will always run.")
+
+Custom exceptions can be raised using the raise keyword:
+
+raise ValueError("Invalid value provided.")
+
+A4:
+A decorator is a function that takes another function as an argument and modifies its behavior without changing its structure. It is often used to add functionality to existing functions or methods in a reusable way.
+
+Example:
+
+def decorator_function(original_function):
+    def wrapper_function():
+        print("Wrapper executed before the function.")
+        original_function()
+    return wrapper_function
+
+@decorator_function
+def display():
+    print("Display function ran.")
+
+display()
+
+In this example, the @decorator_function modifies the behavior of the display function by adding additional code before and after it runs.
+
+A5:
+A lambda function is an anonymous, small, single-expression function in Python, defined using the lambda keyword. It is used when a small function is needed for a short period.
+
+Syntax:
+
+lambda arguments: expression
+
+Example:
+
+add = lambda x, y: x + y
+print(add(2, 3))  # Output: 5
+
+Lambda functions are commonly used with functions like map(), filter(), and sorted().
+
+A6:
+Python supports multithreading, but it is limited by the Global Interpreter Lock (GIL), which ensures that only one thread can execute Python code at a time. This makes multithreading less effective for CPU-bound tasks, though it works well for I/O-bound tasks (e.g., file handling, network requests).
+
+Multithreading:
+
+Multiple threads share the same memory space but are limited by the GIL.
+Suitable for I/O-bound tasks.
+
+Multiprocessing:
+
+Each process has its own memory space and can run in true parallel on multiple cores.
+Suitable for CPU-bound tasks where the GIL becomes a bottleneck.
+
+Example of multithreading:
+
+import threading
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_numbers)
+thread1.start()
+thread2.start()
+thread1.join()
+thread2.join()
+
+A7:
+File operations in Python involve opening, reading, writing, and closing files. The open() function is used to open a file and returns a file object for performing operations.
+
+Opening a file:
+
+file = open("example.txt", "r")  # 'r' for read mode
+
+Reading a file:
+
+read(): Reads the entire file.
+readline(): Reads one line at a time.
+readlines(): Reads all lines and returns them as a list.
+
+with open("example.txt", "r") as file:
+    content = file.read()  # Reads entire file
+
+Writing to a file:
+
+write(): Writes a string to the file.
+writelines(): Writes a list of strings to the file.
+
+with open("example.txt", "w") as file:
+    file.write("Hello, World!")
+
+File modes:
+
+'r': Read mode.
+'w': Write mode (overwrites the file).
+'a': Append mode (adds to the file).
+'r+': Read and write mode.
+'b': Binary mode (used for non-text files, e.g., images).
+
+OOP Implementation:
+
+A1:
+Object-Oriented Programming (OOP) is a programming paradigm centered around the concept of "objects," which can contain data in the form of fields (attributes) and code in the form of procedures (methods). OOP aims to increase code reusability, scalability, and maintainability. The basic principles of OOP include:
+
+Encapsulation: Bundling data and methods that operate on that data within a single unit (class) while restricting direct access to some components.
+
+Abstraction: Hiding complex implementation details and exposing only essential features of an object.
+
+Inheritance: Allowing one class (subclass) to inherit attributes and methods from another class (superclass), promoting code reuse.
+
+Polymorphism: Enabling different classes to be treated as instances of the same class through a common interface, allowing for method overriding and duck typing.
+
+A2:
+A class in Python is a blueprint for creating objects (instances) that define a set of attributes and methods common to all objects of that type. An object is an instance of a class, representing a specific entity with its own state and behavior defined by the class.
+
+A3:
+A class is created using the class keyword followed by the class name. The class can have an __init__ method to initialize attributes.
+
+Example:
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+A4:
+Instance Variables: Variables defined within methods that are unique to each instance of a class. They are typically defined in the __init__ method.
+
+Class Variables: Variables defined within a class but outside any methods, shared across all instances of the class. They are accessed using the class name or instance.
+
+A5:
+The __init__ method is a special method in Python called the constructor. It initializes the object's attributes when a new instance of the class is created. It sets up the initial state of the object.
+
+A6:
+self: Refers to the instance of the class within instance methods. It allows access to instance variables and methods.
+
+cls: Refers to the class itself within class methods. It allows access to class variables and methods.
+
+A7:
+Inheritance is a mechanism in OOP that allows one class (subclass) to inherit attributes and methods from another class (superclass). This promotes code reuse and establishes a hierarchical relationship between classes.
+
+A8:
+Method Overriding: A subclass provides a specific implementation of a method that is already defined in its superclass. The overridden method in the subclass is called when invoked on an instance of that subclass.
+
+Method Overloading: The ability to define multiple methods with the same name but different parameters within the same class. Python does not support traditional method overloading directly, but it can be achieved using default arguments or variable-length arguments.
+
+A9:
+Multiple inheritance occurs when a class inherits from more than one superclass. Python supports multiple inheritance, and it uses the Method Resolution Order (MRO) to determine the order in which classes are searched when executing a method. MRO follows the C3 linearization algorithm to maintain a consistent order.
+
+A10:
+Abstract classes are classes that cannot be instantiated and typically contain one or more abstract methods, which are defined but not implemented. In Python, the abc module provides tools for defining abstract base classes (ABCs). Interfaces define a contract for classes to implement, ensuring certain methods are present.
+
+A11:
+Polymorphism is a concept that allows different classes to be treated as instances of the same class through a common interface. This enables the same method name to behave differently based on the object calling it, often achieved through method overriding or duck typing.
+
+A12:
+Encapsulation is the bundling of data and methods that operate on that data within a single unit (class) while restricting direct access to some components. This promotes data hiding and allows controlled access through public methods.
+
+A13:
+Getters and setters are methods used to access and modify private attributes in a class. Getters retrieve the value of private attributes, while setters update their values, often with validation. They can be implemented using the property() method or decorators (@property, @setter).
+
+A14:
+Operator overloading in Python allows developers to define custom behavior for operators by implementing special methods in a class. Common methods include __add__ for addition, __sub__ for subtraction, etc. These methods are called automatically when the corresponding operator is used.
+
+A15:
+Static Methods: Defined using the @staticmethod decorator, static methods do not access instance or class-specific data. They behave like plain functions within the class's namespace.
+
+Class Methods: Defined using the @classmethod decorator, class methods take the class as their first parameter (cls). They can access and modify class state but not instance-specific data.
