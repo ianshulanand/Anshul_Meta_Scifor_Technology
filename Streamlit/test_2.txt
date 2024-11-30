@@ -1,0 +1,166 @@
+1.
+Decorators are functions that modify the functionality of another function. They allow me to wrap another function to extend its behavior without permanently modifying it.
+
+Example:
+
+def decorator_function(original_function):
+    def wrapper_function():
+        print("Wrapper executed before {}".format(original_function.__name__))
+        return original_function()
+    return wrapper_function
+
+@decorator_function
+def display():
+    return "Display function executed"
+
+display()
+
+Output:
+
+Wrapper executed before display
+Display function executed
+
+2.
+Method Overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass.
+Method Overloading allows the creation of multiple methods with the same name but different parameters (not supported directly in Python; it can be simulated).
+
+Example:
+
+# Method Overriding
+class Animal:
+    def sound(self):
+        return "Animal sound"
+
+class Dog(Animal):
+    def sound(self):
+        return "Bark"
+
+# Method Overloading (simulated)
+class MathOperations:
+    def add(self, a, b=None):
+        if b is not None:
+            return a + b
+        return a + a
+
+animal = Animal()
+dog = Dog()
+math_ops = MathOperations()
+
+print(animal.sound())  # Output: Animal sound
+print(dog.sound())     # Output: Bark
+print(math_ops.add(5, 10))  # Output: 15
+print(math_ops.add(5))       # Output: 10
+
+3.
+Hybrid Inheritance is a combination of multiple inheritance and hierarchical inheritance.
+
+Example:
+
+class Base:
+    def base_method(self):
+        return "Base method"
+
+class DerivedA(Base):
+    def derived_a_method(self):
+        return "Derived A method"
+
+class DerivedB(Base):
+    def derived_b_method(self):
+        return "Derived B method"
+
+class Hybrid(DerivedA, DerivedB):
+    def hybrid_method(self):
+        return "Hybrid method"
+
+hybrid = Hybrid()
+print(hybrid.base_method())      # Output: Base method
+print(hybrid.derived_a_method())  # Output: Derived A method
+print(hybrid.derived_b_method())  # Output: Derived B method
+print(hybrid.hybrid_method())      # Output: Hybrid method
+
+4.
+Stacks:
+
+Time Complexity:
+Push: O(1)
+Pop: O(1)
+Peek: O(1)
+Space Complexity: O(n), where n is the number of elements in the stack.
+
+Queues:
+
+Time Complexity:
+Enqueue: O(1)
+Dequeue: O(1)
+Front/Peek: O(1)
+Space Complexity: O(n), where n is the number of elements in the queue.
+
+Linked Lists:
+
+Time Complexity:
+Insertion: O(1) (if at head), O(n) (if at tail)
+Deletion: O(1) (if deleting head), O(n) (if deleting a specific node)
+Search: O(n)
+Space Complexity: O(n), where n is the number of nodes.
+
+5.
+Button: A simple button that triggers an action when clicked.
+
+import streamlit as st
+
+if st.button('Click Me'):
+    st.write('Button clicked!')
+
+Slider: Allows users to select a value from a range.
+
+value = st.slider('Select a value', 0, 100, 50)
+st.write('Selected value:', value)
+
+Text Input: A field for users to enter text.
+
+user_input = st.text_input('Enter my name:')
+st.write('Hello,', user_input)
+
+6.
+In Streamlit, sessions are used to maintain the state of the application. Each user has their own session, which allows them to interact with the app independently. I can use st.session_state to store and manage session-level variables.
+
+Example:
+
+import streamlit as st
+
+if 'count' not in st.session_state:
+    st.session_state.count = 0
+
+if st.button('Increment'):
+    st.session_state.count += 1
+
+st.write('Count:', st.session_state.count)
+
+7.
+To run a Streamlit file, I can use the following command in the terminal:
+
+streamlit run my_file.py
+
+Replace my_file.py with the name of my Python file containing Streamlit code.
+
+8.
+I can use libraries like matplotlib or seaborn in Streamlit to plot graphs.
+
+Example:
+
+import streamlit as st
+import matplotlib.pyplot as plt
+
+# Bar Chart
+data = [1, 2, 3, 4, 5]
+plt.bar(range(len(data)), data)
+st.pyplot(plt)
+
+# Pie Chart
+labels = ['A', 'B', 'C', 'D']
+sizes = [15, 30, 45, 10]
+plt.figure(figsize=(6, 6))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+st.pyplot(plt)
+
+This will display a bar chart and a pie chart in my Streamlit app.
