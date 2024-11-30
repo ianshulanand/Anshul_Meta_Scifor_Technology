@@ -1,0 +1,115 @@
+Algorithm Questions
+
+1.
+Regularization techniques add a penalty term to the loss function, discouraging overly complex models:
+
+L1 Regularization (Lasso): Adds the absolute values of the coefficients to the loss function. It tends to shrink some coefficients to zero, effectively performing feature selection and simplifying the model.
+L2 Regularization (Ridge): Adds the square of the coefficients to the loss function. It reduces the magnitude of all coefficients, distributing the penalty evenly and maintaining all features while controlling their impact.
+
+Both methods reduce the risk of overfitting by limiting the model's complexity.
+
+2.
+Gradient descent relies on the magnitude of the gradient to optimize the loss function. When features have different scales:
+
+Features with large values dominate, causing slower convergence.
+Unscaled features may lead to erratic optimization paths, complicating convergence. Feature scaling (e.g., standardization or normalization) ensures all features contribute equally to the optimization process, speeding up convergence.
+
+Problem Solving
+
+1.
+Identify missing values: Use methods like .isnull() or .info() in pandas.
+Imputation:
+
+Numerical: Replace with mean, median, or mode.
+Categorical: Replace with mode or a placeholder.
+Remove rows/columns: Drop rows/columns if missing values are significant.
+Advanced methods: Use predictive imputation techniques like k-Nearest Neighbors (KNN) or regression-based imputation.
+
+2.
+Step 1: Data Collection
+
+Gather raw data from sources like CSV files, databases, or APIs.
+
+Step 2: Data Cleaning
+
+Handle missing values.
+Remove duplicate records.
+
+Step 3: Data Preprocessing
+
+Encode categorical variables (e.g., one-hot encoding, label encoding).
+Scale numerical features (e.g., standardization or normalization).
+Split the dataset into training and testing sets.
+
+Step 4: Model Training
+
+Select and train a classification model (e.g., Logistic Regression, Decision Tree).
+
+Step 5: Model Evaluation
+
+Use metrics like accuracy, precision, recall, and F1-score.
+
+Step 6: Deployment
+
+Save the model using libraries like joblib or pickle.
+
+Coding
+
+1.
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+data = load_iris()
+X = data.data
+y = data.target
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train Decision Tree Classifier
+clf = DecisionTreeClassifier(random_state=42)
+clf.fit(X_train, y_train)
+
+# Make predictions
+y_pred = clf.predict(X_test)
+
+# Evaluate
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
+
+2.
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Load dataset
+data = pd.read_csv('my_dataset.csv')  # Replace with actual file path
+X = data.drop('target_column', axis=1)  # Replace 'target_column' with actual target column
+y = data['target_column']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+print(f"Training set size: {len(X_train)}")
+print(f"Testing set size: {len(X_test)}")
+
+Case Study
+
+Scenario: A company wants to predict employee attrition.
+
+Type of ML Problem:
+
+It is a binary classification problem (e.g., predicting "Attrition" as Yes/No).
+
+Algorithms:
+
+Logistic Regression: Simple and interpretable, good for binary classification.
+Random Forest: Handles complex patterns, robust against overfitting, and provides feature importance.
+Gradient Boosting (e.g., XGBoost, LightGBM): Provides high accuracy by combining weak learners.
+
+Justification:
+
+If interpretability is crucial, Logistic Regression is preferred.
+If performance on imbalanced data is required, Random Forest or Gradient Boosting works well with class weights or oversampling.
