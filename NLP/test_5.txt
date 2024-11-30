@@ -1,0 +1,87 @@
+NLP
+
+1.
+# Importing necessary libraries
+from textblob import TextBlob
+
+# Text input
+text = "Natural Language Processing is an exciting field of AI!"
+
+# Converting to lowercase
+lower_text = text.lower()
+print("Lowercase Text:", lower_text)
+
+# Tokenization
+blob = TextBlob(text)
+tokens = blob.words
+print("Tokens:", tokens)
+
+# Removing stopwords
+from nltk.corpus import stopwords
+import nltk
+nltk.download('stopwords')
+
+stop_words = set(stopwords.words("english"))
+filtered_words = [word for word in tokens if word.lower() not in stop_words]
+print("Filtered Words:", filtered_words)
+
+# Lemmatization
+from nltk.stem import WordNetLemmatizer
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+lemmatizer = WordNetLemmatizer()
+lemmatized_words = [lemmatizer.lemmatize(word) for word in filtered_words]
+print("Lemmatized Words:", lemmatized_words)
+
+2.
+# Importing necessary libraries
+import spacy
+
+# Load the spaCy model
+nlp = spacy.load("en_core_web_sm")
+
+# Input text
+text = "SpaCy is a great tool for Natural Language Processing."
+
+# Process the text
+doc = nlp(text)
+
+# Tokenization
+print("Tokens:")
+for token in doc:
+    print(token.text)
+
+# Part-of-speech tagging
+print("\nPOS Tags:")
+for token in doc:
+    print(f"{token.text}: {token.pos_}")
+
+# Named Entity Recognition (NER)
+print("\nNamed Entities:")
+for entity in doc.ents:
+    print(f"{entity.text} ({entity.label_})")
+
+# Lemmatization
+print("\nLemmatized Tokens:")
+for token in doc:
+    print(f"{token.text} -> {token.lemma_}")
+
+Statistics
+
+Aspect	Descriptive Statistics	Inferential Statistics
+Definition	Summarizes and describes features of a dataset.	Draws conclusions and makes predictions about a population.
+Purpose	To provide a summary of the data.	To make inferences about the population based on sample data.
+Focus	Focuses on actual data collected.	Focuses on generalizations beyond the collected data.
+Techniques	Measures like mean, median, mode, range, standard deviation.	Hypothesis testing, confidence intervals, regression analysis.
+Data Usage	Uses the entire dataset.	Uses a sample of the dataset.
+Uncertainty	No element of uncertainty; results are exact.	Contains uncertainty due to sampling error.
+Graphs and Charts	Includes histograms, pie charts, bar graphs.	Rarely involves graphical representation.
+Population vs. Sample	Deals with the dataset provided (sample or population).	Makes predictions about the entire population from the sample.
+Mathematical Basis	Simple calculations and visualization.	Relies heavily on probability theory.
+Examples	Average test scores of a class.	Predicting national average scores from a sample of schools.
+Software Tools	Excel, Tableau, Power BI.	SPSS, R, Python (SciPy, statsmodels).
+Hypothesis Testing	Not used.	Widely used.
+Result Type	Concrete and specific.	Probabilistic and generalizable.
+Requirement	Requires the full dataset.	Requires only a representative sample.
+Scope	Limited to describing data.	Extends to making decisions and predictions.
