@@ -11,3 +11,4 @@ youtube_dl
 datetime
 wikipedia
 streamlit
+yt-dlp
