@@ -9,3 +9,5 @@ googlesearch-python
 googletrans
 youtube_dl
 datetime
+wikipedia
+streamlit
