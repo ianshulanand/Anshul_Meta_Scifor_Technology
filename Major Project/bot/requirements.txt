@@ -1,0 +1,11 @@
+SpeechRecognition
+pyttsx3
+pyaudio
+requests
+textblob
+nltk
+spacy
+googlesearch-python
+googletrans
+youtube_dl
+datetime
