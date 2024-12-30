@@ -10,3 +10,4 @@ googletrans
 youtube_dl
 datetime
 wikipedia
+streamlit
